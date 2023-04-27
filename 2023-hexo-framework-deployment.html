@@ -16,29 +16,29 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Ming Xu">
-  <meta name="keywords" content="技术, 感悟, 日常">
+  <meta name="keywords" content="技术, 感悟, 生活">
   
     <meta name="description" content="近来，博主PhD生涯遭遇重大挫折。在幻灭感和虚无感的双重挤压下，精神备受煎熬。自忖学术道路难以为继，奋然决心技术转型。   在 Web 2.0 时代，个人博客是一块难得的精神自留地，同时也是记录个人成长的良好载体。以建立个人博客作为探索技术转型路的开端，颇有象征意义，也挺 Cool。   博主作为小白，决定选择基于一种相对成熟、社区相对活跃的开源框架，即 Hexo，来搭建个人博客。大概花了一天时间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="起飞！基于Hexo框架的个人博客搭建与部署实录">
-<meta property="og:url" content="https://michael-mxu.github.io/2023-hexo-framework-deployment.html">
-<meta property="og:site_name" content="Ming&#39;s Blog">
+<meta property="og:url" content="https://xuming234.work/2023-hexo-framework-deployment.html">
+<meta property="og:site_name" content="胥铭的博客 - 不积硅步，无以至千里">
 <meta property="og:description" content="近来，博主PhD生涯遭遇重大挫折。在幻灭感和虚无感的双重挤压下，精神备受煎熬。自忖学术道路难以为继，奋然决心技术转型。   在 Web 2.0 时代，个人博客是一块难得的精神自留地，同时也是记录个人成长的良好载体。以建立个人博客作为探索技术转型路的开端，颇有象征意义，也挺 Cool。   博主作为小白，决定选择基于一种相对成熟、社区相对活跃的开源框架，即 Hexo，来搭建个人博客。大概花了一天时间">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://michael-mxu.github.io/img/post_img/hexo.png">
+<meta property="og:image" content="https://xuming234.work/img/post_img/hexo.png">
 <meta property="article:published_time" content="2023-04-24T02:36:44.000Z">
-<meta property="article:modified_time" content="2023-04-27T08:48:47.373Z">
+<meta property="article:modified_time" content="2023-04-27T10:36:53.408Z">
 <meta property="article:author" content="Ming Xu">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="日常">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://michael-mxu.github.io/img/post_img/hexo.png">
+<meta name="twitter:image" content="https://xuming234.work/img/post_img/hexo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>起飞！基于Hexo框架的个人博客搭建与部署实录 - Ming&#39;s Blog</title>
+  <title>起飞！基于Hexo框架的个人博客搭建与部署实录 - 胥铭的博客 - 不积硅步，无以至千里</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"michael-mxu.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"xuming234.work","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -301,7 +301,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年4月27日 下午
+                    本文最后更新于：2023年4月27日 晚上
                   
                 
               </p>
@@ -359,7 +359,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean <span class="hljs-comment">#清楚缓存文件db.json和已生成的静态文件public</span><br>hexo g <span class="hljs-comment">#生成网站静态文件</span><br>hexo d <span class="hljs-comment">#将静态文件推送到指定的远端仓库分支中，并且完全覆盖仓库内容</span><br></code></pre></td></tr></table></figure>
 <p>完成之后， 在浏览器中，即可输入 https:&#x2F;&#x2F;&lt;UserName&gt;.github.io 访问博客网页了。</p>
 <div class="note note-warning">
-            <ul><li><strong>Tips</strong>：关于 <code>hexo d</code> 失败的几种解决方案<ul><li>出现 Recv failure 等无法上传的问题： 通常跟网络环境有关系。博主之前使用的 https 指定仓库地址，频繁无法上传页面。不管是否配置代理，都不好使。在 _config.yml 中将 https 换成 git@ 的方式之后没有再报错了。</li><li>注意提前验证邮箱和用户名，参考 Part 2 与 Github 绑定部分。</li><li>尝试清除缓存文件重新上传， 即删除 .deploy_git 文件，重新运行清除、生成、上传命令。 </li><li>在 _config.yml 中设置 url 为 Github Pages 地址。</li></ul></li></ul>
+            <ul><li><strong>Tips</strong>：关于 <code>hexo d</code> 失败的几种解决方案<ul><li>出现 Recv failure 等无法上传的问题： 通常跟网络环境有关系。博主之前使用的 https 指定仓库地址，频繁无法上传页面。不管是否配置代理，都不好使。在 _config.yml 中将 https 换成 git@ 的方式之后没有再报错了。</li><li>注意提前验证邮箱和用户名，参考 Part 2 与 Github 绑定部分。</li><li>尝试清除缓存文件重新上传， 即删除 .deploy_git 文件，重新运行清除、生成、上传命令。</li></ul></li></ul>
           </div>
 
 <h2 id="5-域名解析"><a href="#5-域名解析" class="headerlink" title="5. 域名解析"></a>5. 域名解析</h2><p>通过 Github Pages 托管的个人博客域名是固定的，不够个性。私以为，只有拥有名片般域名的博客才是完整的。博主遂斥重金 (200多块钱，可以用 3 年，其实也还好。。。) 在 <a target="_blank" rel="noopener" href="https://hk.godaddy.com/en">Godaddy</a> 购买了该域名。</p>
@@ -425,7 +425,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>起飞！基于Hexo框架的个人博客搭建与部署实录</div>
-      <div>https://michael-mxu.github.io/2023-hexo-framework-deployment.html</div>
+      <div>https://xuming234.work/2023-hexo-framework-deployment.html</div>
     </div>
     <div class="license-meta">
       
