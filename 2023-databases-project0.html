@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuming234.work/img/post_img/CMU15_445/cover.jpg">
 <meta property="article:published_time" content="2023-07-28T02:31:33.000Z">
-<meta property="article:modified_time" content="2023-07-28T12:28:31.670Z">
+<meta property="article:modified_time" content="2023-07-28T12:31:13.568Z">
 <meta property="article:author" content="Ming Xu">
 <meta property="article:tag" content="数据库系统">
 <meta property="article:tag" content="C++">
@@ -348,7 +348,7 @@
 <p>作者推荐在 Ubuntu 20.04 以上的版本或者 macOS 中编译、开发、测试 Bustub， 而其它开发环境不能保证正常工作。博主本人的开发机是 Windows 10, 测试机是 Ubuntu 18.04。博主一开始试图直接在测试机中安装项目所需的开发工具，意识到确实很难完整安装所有工具的推荐版本，也无法生成完整的项目文件。主要原因是，项目要求用 clang-12 进行编译，而 Ubuntu 18.04 最高只支持到 clang-6。</p>
 <p>为了减少踩坑，决定采用作者提供的 Docker 容器对文件进行编译。编译过程很顺利，所有的编译工具都能被顺利安装。值得注意的是，为了方便 Debug， 作者建议在容器中安装 GDB 调试工具，同时任何时候 <code>cmake</code> 都指定为 Debug 模式，即</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake -D CMKAE_BUILD_TYPE=Debug ..<br></code></pre></td></tr></table></figure>
-<p>这里有一个<strong>小坑</strong>，指定 Debug 模式的时候，会报 warning，提示CMake 并没有使用推荐的编译器。 这里可以修改 CMakeLists.txt， 手动指明使用的编译：</p>
+<p>这里有一个<strong>小坑</strong>，指定 Debug 模式的时候，会报 warning，提示CMake 并没有使用推荐的编译器。 这里可以修改 CMakeLists.txt， 手动指明使用的编译器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span>(CMAKE_C_COMPILER /usr/bin/clang-12)<br><span class="hljs-built_in">set</span>(CMAKE_CXX_COMPILER /usr/bin/clang++-12)<br></code></pre></td></tr></table></figure>
 <h3 id="2-2-VSCode-远程开发">2.2 VSCode 远程开发</h3>
 <p>由于测试机并没有提供 GUI，直接将 Vim 配置成 C++ 的开发环境对博主来说难度颇大，使用也不顺手，于时考虑在本地开发机中利用 VSCode 进行远程开发。值得注意的是，这里的远程主机是运行中的 docker 容器。</p>
