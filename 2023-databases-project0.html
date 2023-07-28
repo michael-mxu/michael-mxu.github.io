@@ -18,16 +18,16 @@
   <meta name="author" content="Ming Xu">
   <meta name="keywords" content="技术, 感悟, 生活">
   
-    <meta name="description" content="1 介绍 Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 C11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 C 进行编写。 该项目要求为 Bustub 实现一个支持键值对存储的字典树（Trie">
+    <meta name="description" content="1 介绍 Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 Cpp11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 Cpp 进行编写。 该项目要求为 Bustub 实现一个支持键值对存储的字典树（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="踩坑实录之Project 0：C++ 实现字典树">
 <meta property="og:url" content="https://xuming234.work/2023-databases-project0.html">
 <meta property="og:site_name" content="胥铭的博客 - 不积硅步，无以至千里">
-<meta property="og:description" content="1 介绍 Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 C11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 C 进行编写。 该项目要求为 Bustub 实现一个支持键值对存储的字典树（Trie">
+<meta property="og:description" content="1 介绍 Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 Cpp11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 Cpp 进行编写。 该项目要求为 Bustub 实现一个支持键值对存储的字典树（">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuming234.work/img/post_img/CMU15_445/cover.jpg">
 <meta property="article:published_time" content="2023-07-28T02:31:33.000Z">
-<meta property="article:modified_time" content="2023-07-28T12:23:32.888Z">
+<meta property="article:modified_time" content="2023-07-28T12:27:23.333Z">
 <meta property="article:author" content="Ming Xu">
 <meta property="article:tag" content="数据库系统">
 <meta property="article:tag" content="C++">
@@ -310,7 +310,7 @@
               <div class="markdown-body">
                 
                 <h2 id="1-介绍">1 介绍</h2>
-<p>Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 C<ins>11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 C</ins> 进行编写。</p>
+<p>Project 0， 也就是C++ Primer， 是 CMU15-445 2022-Fall 课程的入门项目，重点考察 Cpp11 (及以上版本) 的基础语法， 包括与面向对象、泛型编程相关的基本特性。这门课程的所有项目需要在 Bustub （一个专门为课程教学设计的 DBMS，也可见课程之用心…）中使用 Cpp 进行编写。</p>
 <p>该项目要求为 Bustub 实现一个支持键值对存储的字典树（Trie树，如下图所示）。这里博主回忆起了之前在《数据结构与算法分析：C++语言描述》(第四版) 中看到的关于后缀树和后缀数组 (Suffix Array) 的内容。这两种数据结构 (前缀树和后缀树) 感觉非常相似，都可以支持在字符串中快速查找给定的模式。那本书中给出了后缀数组和最长公共前缀数组 (<strong>L</strong>ongest <strong>C</strong>ommon <strong>P</strong>refix, 二者合并可以唯一确定后缀树) 的一种 O(<em>N</em>) 实现，非常烧脑。博主在做这个项目之前也重温了一下这部分的内容，以为会有共同之处。幸运的是，项目中 Trie 树的实现基于 STL 提供的 HashMap， 还是比较容易理解的。<br>
 <img src="/img/post_img/CMU15_445/trie_example.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>值得注意的是</strong>，目前该数据库已经更新到支持 2023-Spring 的教学要求， 与 2022-Fall 的课程要求并不完全相同。 庆幸的是，课程团队提供了一个 2022-Fall 的发布版。如果需要完成 2022-Fall 的项目，<code>git clone</code> 时必须指定 branch (博主之前对着 2023-Spring 的代码和 2022-Fall 的项目说明，懵逼了半天…):</p>
