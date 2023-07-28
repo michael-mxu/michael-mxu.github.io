@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuming234.work/img/post_img/CMU15_445/cover.jpg">
 <meta property="article:published_time" content="2023-07-28T02:31:33.000Z">
-<meta property="article:modified_time" content="2023-07-28T12:27:23.333Z">
+<meta property="article:modified_time" content="2023-07-28T12:28:31.670Z">
 <meta property="article:author" content="Ming Xu">
 <meta property="article:tag" content="数据库系统">
 <meta property="article:tag" content="C++">
@@ -350,7 +350,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake -D CMKAE_BUILD_TYPE=Debug ..<br></code></pre></td></tr></table></figure>
 <p>这里有一个<strong>小坑</strong>，指定 Debug 模式的时候，会报 warning，提示CMake 并没有使用推荐的编译器。 这里可以修改 CMakeLists.txt， 手动指明使用的编译：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span>(CMAKE_C_COMPILER /usr/bin/clang-12)<br><span class="hljs-built_in">set</span>(CMAKE_CXX_COMPILER /usr/bin/clang++-12)<br></code></pre></td></tr></table></figure>
-<h3 id="2-2-开发环境搭建">2.2 开发环境搭建</h3>
+<h3 id="2-2-VSCode-远程开发">2.2 VSCode 远程开发</h3>
 <p>由于测试机并没有提供 GUI，直接将 Vim 配置成 C++ 的开发环境对博主来说难度颇大，使用也不顺手，于时考虑在本地开发机中利用 VSCode 进行远程开发。值得注意的是，这里的远程主机是运行中的 docker 容器。</p>
 <p>为了在外部能访问容器, 首先在创建、运行容器时，需要指定端口映射：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -it -p 10008:10008 -v <span class="hljs-variable">$&#123;pwd&#125;</span>:/bustub [bustub-image] bash<br></code></pre></td></tr></table></figure>
