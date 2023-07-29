@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuming234.work/img/post_img/CMU15_445/cover.jpg">
 <meta property="article:published_time" content="2023-07-28T02:31:33.000Z">
-<meta property="article:modified_time" content="2023-07-28T12:37:12.732Z">
+<meta property="article:modified_time" content="2023-07-28T17:41:00.869Z">
 <meta property="article:author" content="Ming Xu">
 <meta property="article:tag" content="数据库系统">
 <meta property="article:tag" content="C++">
@@ -301,7 +301,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年7月28日 晚上
+                    本文最后更新于：2023年7月29日 凌晨
                   
                 
               </p>
@@ -353,7 +353,7 @@
 <h3 id="2-2-VSCode-远程开发">2.2 VSCode 远程开发</h3>
 <p>由于测试机并没有提供 GUI，直接将 Vim 配置成 C++ 的开发环境对博主来说难度颇大，使用也不顺手，于时考虑在本地开发机中利用 VSCode 进行远程开发。值得注意的是，这里的远程主机是运行中的 docker 容器。</p>
 <p>为了在外部能访问容器, 首先在创建、运行容器时，需要指定端口映射：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -it -p 10008:10008 -v <span class="hljs-variable">$&#123;pwd&#125;</span>:/bustub [bustub-image] bash<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -it -p 10008:10008 -v $(<span class="hljs-built_in">pwd</span>):/bustub [bustub-image] bash<br></code></pre></td></tr></table></figure>
 <p>其中 <code>-t</code> 为容器分配伪终端；<code>-i</code>让容器的标准输入保持打开；<code>-p</code> 指定端口映射，这里将本地主机的 10008 端口映射到容器的 10008 端口; <code>-v</code> 将本地文件挂载到容器的指定文件目录下， 这里是在 bustub 根目录下运行的 <code>docker run</code> 指令； 后续再指定运行的 bustub 镜像 (通过 <code>docker build</code> 指令建立) 和需要运行的指令(<code>bash</code> 进入容器的 bash 命令行)。</p>
 <p>然后，在Docker 容器中安装 SSH 所需的依赖:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get update<br>apt-get install openssh-server openssh-clients openssl<br></code></pre></td></tr></table></figure>
@@ -381,7 +381,7 @@
 <p>由于 unique_ptr 的种种限制，资源转移时需要格外小心。博主踩的第一个<strong>坑</strong>是 TrieNode 类的移动构造函数。 在这里，需要将 TrieNode 类中的 children_ 私有成员移动到新对象中。</p>
 <p>博主原本认为, 可以直接将 other_trie_node.children_ 传递给 <code>unordered_map&lt;char, std::unique_ptr&lt;TrieNode&gt;&gt;</code> 的构造函数， 编译器能够通过模板产生正确的移动构造函数。 然而事与愿违, 此时调用的仍然是复制构造函数。由于 unique_ptr 不支持复制构造， <code>unordered_map&lt;char, std::unique_ptr&lt;TrieNode&gt;&gt;</code> 的复制构造函数也被声明为 <code>=delete</code>，导致编译失败。</p>
 <p>这里应该涉及到引用参数的模板匹配机制 (这部分个人感觉很复杂)。之所以调用复制构造函数，博主认为是直接使用参数名时，传递的依然是左值表达式 (参考《C++ Primer》(第5版) 613页)。这里需要传递右值表达式，最直接的解决办法是使用 <code>std::move()</code>；稍微复杂一点的是使用转发, 即:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::forward&lt;<span class="hljs-built_in">deceltype</span>(children_)(other_trie_node.children_);<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::forward&lt;<span class="hljs-built_in">deceltype</span>(children_)&gt;(other_trie_node.children_);<br></code></pre></td></tr></table></figure>
 <p>值得注意的是， <code>deceltype()</code>用于右值时得到原本的类型。 另外，在移动构造函数体内进行 <code>swap</code> 也是一种可行的方法, 因为 children_ 应该默认是空的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">children_.<span class="hljs-built_in">swap</span>(other_trie_node.children_);<br></code></pre></td></tr></table></figure>
 <p>另一个涉及到相似问题的地方是 TrieNode 类中的插入操作。由于需要在 children_ 中建立新的不存在的 key， 推荐使用 unordered_map 的 insert 方法 (使用 [] 的方式，会增加一次对 unique_ptr 对象默认构造的调用，参考《Effective STL》条款24)。 如果使用 insert 则难以避免调用 make_pair 来构造 pair 对象，此时会再次面对 unique_ptr 对象的传递问题。</p>
